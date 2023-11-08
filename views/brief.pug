@@ -1,19 +1,19 @@
 extends template 
 block content
-    .form-box
-        .debrief-container#surgury
-            div.top
-                header New Surgury
-                div.input-box
-                    input.input-field(select#(name="SurguryType")  placeholder="Surgury Type" option(value="Coronary Artery Bypass Grafting (CABG)") option(value="Valve Replacement Surgery") option(value="Atrial Septal Defect (ASD) Closure") option(value="Ventricular Septal Defect (VSD) Repair") option(value="Heart Transplantation")  required)
-                    i.bx.bx-plus-medical
-                div.input-box
-                    input.submit(type="submit" value="Get Points")
-    div.page2
-        div.result-container
-            h1 points to Improve:
-            h2 #{v1}
-            h2 #{v2}
-            h2 #{v3}
-    
+    form(action="/getPoints" method="get")
+        div.input-box
+            select.input-field(name="SurgeryType" required)
+                option(value="" disabled selected) -- Select Surgury Type --
+                option(value="Coronary Artery Bypass Grafting (CABG)") Coronary Artery Bypass Grafting (CABG)
+                option(value="Valve Replacement Surgery") Valve Replacement Surgery
+                option(value="Atrial Septal Defect (ASD) Closure") Atrial Septal Defect (ASD) Closure
+                option(value="Ventricular Septal Defect (VSD) Repair") Ventricular Septal Defect (VSD) Repair
+                option(value="Heart Transplantation") Heart Transplantation
+        div.input-box
+            input.input-field(type="number" placeholder="BMI" name="BMI" min="12" max="42" required)
+        div.input-box
+            input.input-field(type="number" placeholder="Age" name="age" min="18" max="120" required)
+        div.input-box
+            input.submit(type="submit" value="Get Points")
+  
         

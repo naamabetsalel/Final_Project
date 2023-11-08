@@ -1,49 +1,59 @@
 extends template 
 block content
-    .form-box
-        .debrief-container#surgury
-          div.top
-    header New Surgery
-    form(action="/debrief" method="get")
+    div.header
+        h1 New Surgery :
+    form(action="/insertSurgery" method="get")
         div.input-box
-            input.input-field(type="date" placeholder="Date Of Surgery" name="date" required)
-            i.bx.bxs-time
+            input.input-field(type="date" placeholder="Date Of Surgery" name="date" id="surgeryDate" required)
+            i.bx.bxs-calender
         div.input-box
             select.input-field(name="SurgeryType" required)
+                option(value="" disabled selected) -- Select Surgury Type --
                 option(value="Coronary Artery Bypass Grafting (CABG)") Coronary Artery Bypass Grafting (CABG)
                 option(value="Valve Replacement Surgery") Valve Replacement Surgery
                 option(value="Atrial Septal Defect (ASD) Closure") Atrial Septal Defect (ASD) Closure
                 option(value="Ventricular Septal Defect (VSD) Repair") Ventricular Septal Defect (VSD) Repair
                 option(value="Heart Transplantation") Heart Transplantation
+            i.bx.bxs-plus-medical 
         div.input-box
-            input.input-field(type="time" placeholder="Surgery Duration" name="duration" required)
+            select.input-field(name="lead" required)
+                option(value="" disabled selected) -- Leader? --
+                option(value="Yes") Yes
+                option(value="No") No
+        div.input-box
+            input.input-field(type="time" placeholder="Surgery Duration" name="duration" min="01:00" max="10:00" required)
             i.bx.bxs-time
         div.input-box
             input.input-field(type="number" placeholder="BMI" name="BMI" min="12" max="42" required)
-            i.bx.bxs-heart
+            i.bx.bxs-bar-chart-square 
         div.input-box
             input.input-field(type="number" placeholder="Age" name="age" min="18" max="120" required)
-            i.bx.bxs-heart
+            i.bx.bx-body
         div.input-box
             select.input-field(name="pastProblems" required)
+                option(value="" disabled selected) -- Past Problems? --
                 option(value="Yes") Yes
                 option(value="No") No
+            i.bx.bx-heart
         div.input-box
-            select.input-field(name="reoperation" required)
-                option(value="Yes") Yes
-                option(value="No") No
+            input.input-field(type="number" placeholder="Complication" name="complication" min="0" required)
+            i.bx.bx-hand
         div.input-box
-            input.input-field(type="number" placeholder="Complication" name="complication" required)
-            i.bx.bxs-heart
-        div.input-box
-            select.input-field(name="Satisfaction" required)
+            select.input-field(name="satisfaction" required)
+                option(value="" disabled selected) -- Patient Satisfaction --
                 option(value="1") 1
                 option(value="2") 2
                 option(value="3") 3
                 option(value="4") 4
                 option(value="5") 5
+            i.bx.bxs-smile
         div.input-box
-            input.input-field(type="text" placeholder="Debrief Point" name="point" required)
+            select.input-field(name="reoperation" required)
+                option(value="" disabled selected) -- Reoperation? --
+                option(value="Yes") Yes
+                option(value="No") No
+        div.input-box
+            textarea(name="point", placeholder="Debrief Point", cols="50", rows="3" required)
             i.bx.bxs-wrench
         div.input-box
             input.submit(type="submit" value="Save")
