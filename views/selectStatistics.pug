@@ -1,16 +1,16 @@
 extends template
 block content
-    .grid-container
         h1 Choose Month and Year for Statistics
         form(action="/selectStatistics", method="post")
+            div.input-box
+                label(for="month") Month:
+                input.input-field(type="number", name="month", id="month" min="1" max="12" required)
             br
-            label(for="month") Month:
+            div.input-box
+                label(for="year") Year:
+                input.input-field(type="number", name="year", id="year" min="2000" max="2099" required)
             br
-            input(type="number", name="month", id="month" min="1" max="12" required)
-            br
-            label(for="year") Year:
-            br
-            input(type="number", name="year", id="year" min="2000" max="2099" required)
-            br
-            button(type="submit") Get Statistics
+            div.input-box
+                input.submit(type="submit" value="Get Statistics")
+            
             

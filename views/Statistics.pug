@@ -1,38 +1,31 @@
 extends template
 block content
-  .grid-container
-    h1 Total Number of Surgeries
-    h2= "=" + v4
-    br
-    br
-    h1 Leader Percentage
-    h2= "=" + v2
-    br
-    br
-    h1 Reoperation Percentage
-    h2= "=" + v3
-    br
-    br
-    h1 Average Satisfaction Last Month
-    h2= "=" + v5
-    br
-    br
-    h1 Average Number of Complications
-    h2= "=" + v6
-    br
-    br
-    h1 Number of Surgeries with Duration Exceeded Planned Duration
-    h2= "=" + v7
-    br
-    br
-    h1 Number of Surgeries by Type
+    h1#he Total Number of Surgeries
+    h2#he2=  v4
+    
+    h1#he Leader Percentage
+    h2#he2=  v2
+   
+    h1#he Reoperation Percentage
+    h2#he2=  v3
+    
+    h1#he Average Satisfaction Last Month
+    h2#he2=  v5
+    
+    h1#he Average Number of Complications
+    h2#he2=  v6
+    
+    h1#he Number of Surgeries with Duration Exceeded Planned Duration
+    h2#he2=  v7
+    
+    h1#he Number of Surgeries by Type
     ul
       each surgeryType in v8
         li= surgeryType.SurgeryType + ": " + surgeryType.Count
     br
-  script.
-    setTimeout(function() {
-        location.reload();
-    }, 1000) 
+    script.
+        setTimeout(function() {
+            location.reload();
+        }, 1000) 
         
        
