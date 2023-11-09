@@ -161,10 +161,37 @@ h1 {
   .grid-container{
     display: grid;
     grid-template-areas: 
-    'headerL headerM headerR' 
-    'left middle right';
+    'headerL headerR' 
+    'left right';
   }
 
+  #piechart{
+    grid-area: headerL;
+    width: 800px;
+    height: 300px;
+    margin: 5px;
+  }
+
+  #chart_div{
+    grid-area: headerR;
+    width: 800px;
+    height: 300px;
+    margin: 5px;
+  }
+
+  #chart_div2{
+    grid-area: right;
+    width: 800px;
+    height: 300px;
+    margin: 5px;
+  }
+
+  #curve_chart3{
+    grid-area: left;
+    width: 800px;
+    height: 300px;
+    margin: 5px;
+  }
 
   
 

@@ -1,8 +1,15 @@
 extends template
 block content
-    div.result-container
-        h1 points to Improve :
-        ol
-            each item in v1
-                li = item.DePoint
+  .container
+    .result-container
+      h1 Points to Improve:
+      ol
+        each item in v1
+          li= item.DePoint  
+
+  .script
+    script.
+      setTimeout(function() {
+        location.reload();
+      }, 1000)
         
