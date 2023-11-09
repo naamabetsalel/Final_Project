@@ -686,7 +686,7 @@ const dropTable = (req,res)=>{
                 const num = results[0].value;  
                 console.log(num);
                 res.cookie("getDec1", num);  
-                res.redirect("/Graphs"); 
+                res.render("Graphs"); 
                 }) 
             })
     };
