@@ -6,6 +6,7 @@ const cookie = require('cookie-parser');
 const { time, count } = require('console');
 const app = express();
 app.use(cookie());
+const csv = require('csvtojson');
 
 
 
@@ -15,8 +16,45 @@ const createTable = (req,res)=>{
         if (err) throw err;
         console.log("Table created");
     });
-    res.redirect('/selectStatistics');
+    res.redirect('/insertData');
     }
+
+
+    const insertData = (req,res)=>{
+        const csvPath = path.join(__dirname, "data.csv");
+        /// this is new
+        csv().fromFile(csvPath).then((jsonObj)=>{
+            console.log(jsonObj);
+            for (let i = 0; i < jsonObj.length; i++) {
+                const element = jsonObj[i];
+                console.log(element);
+                const NewCsvData = {
+                    Date : element.Date,
+                    SurgeryType: element.SurgeryType,
+                    PlanedDuration: element.PlanedDuration,
+                    Leader: element.Leader,
+                    Duration: element.Duration,
+                    BMI: element.BMI,
+                    Age: element.Age,
+                    PastProblems: element.PastProblems,
+                    Complications: element.Complications,
+                    Satisfaction: element.Satisfaction,
+                    Reoperation: element.Reoperation,
+                    DePoint: element.DePoint
+
+                }; 
+                const Q35 = "insert into Surgeries set ?";
+                SQL.query(Q35, NewCsvData, (err, mysqlres)=>{
+                if (err) {
+                    throw err
+                }
+                //res.send('Data inserted into table');
+                });}
+            
+            });
+            res.redirect('/selectStatistics');
+        };
+    
 
 const dropTable = (req,res)=>{
     const Q2 = 'DROP TABLE IF EXISTS Surgeries';    
@@ -904,4 +942,4 @@ const dropTable = (req,res)=>{
     };
 
 
-module.exports = { createTable, dropTable, insertSurgery, getPoints, countExceed, countOnTime, getJan, getFab, getMar, getApr, getMay, getJun, getJul, getAug, getSep, getOct, getNov, getDec, getType1, getType2, getType3, getType4, getType5, getJan1, getFab1, getMar1, getApr1, getMay1, getJun1, getJul1, getAug1, getSep1, getOct1, getNov1, getDec1, leaderPercentage, Reop, totalSurgeriesLastMonth, avgSatisfactionLastMonth, avgComplications, durationExceededPlan, surgeryTypesCount }
+module.exports = { createTable, dropTable, insertSurgery, getPoints, countExceed, countOnTime, getJan, getFab, getMar, getApr, getMay, getJun, getJul, getAug, getSep, getOct, getNov, getDec, getType1, getType2, getType3, getType4, getType5, getJan1, getFab1, getMar1, getApr1, getMay1, getJun1, getJul1, getAug1, getSep1, getOct1, getNov1, getDec1, leaderPercentage, Reop, totalSurgeriesLastMonth, avgSatisfactionLastMonth, avgComplications, durationExceededPlan, surgeryTypesCount, insertData }

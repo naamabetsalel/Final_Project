@@ -94,7 +94,8 @@ const activePage = window.location.href;
           ['On Time',      onTime],
         ]);
         var options = {
-          title: 'My Surgeries Durations'
+          title: 'My Surgeries Durations',
+          colors: ['lightcoral', 'mediumseagreen'], // Set custom colors here
         };
         var chart = new google.visualization.PieChart(document.getElementById('piechart'));
         chart.draw(data, options);
@@ -128,18 +129,19 @@ data.addRows([
 ]);
 
 var options = {
-  title: 'Lead Surgeries Per Month',
-  hAxis: {
-    title: 'Month',
-    format: 'MMM',
-  },
-  vAxis: {
-    title: 'Number of Surgeries',
-  },
-};
-
-var chart = new google.visualization.ColumnChart(document.getElementById('chart_div'));
-chart.draw(data, options);
+    title: 'Lead Surgeries Per Month',
+    hAxis: {
+      title: 'Month',
+      format: 'MMM',
+    },
+    vAxis: {
+      title: 'Number of Surgeries',
+    },
+    colors: ['salmon'],
+  };
+  
+  var chart = new google.visualization.ColumnChart(document.getElementById('chart_div'));
+  chart.draw(data, options);
 }
 
 
@@ -169,6 +171,7 @@ function drawBasic2() {
     vAxis: {
       title: 'Number of Surgeries',
     },
+    colors: ['cadetblue'],
   };
 
   var chart = new google.visualization.ColumnChart(document.getElementById('chart_div2'));
@@ -176,15 +179,14 @@ function drawBasic2() {
 }
 
 
-google.charts.load('current', {'packages':['corechart']});
-      google.charts.setOnLoadCallback(drawChart2);
+
 
       google.charts.load('current', {'packages':['corechart']});
 google.charts.setOnLoadCallback(drawChart2);
 
 function drawChart2() {
   var data = google.visualization.arrayToDataTable([
-    ['Month', 'Sales'],
+    ['Month', 'Satisfaction'],
     ['Jan',  jan1],
     ['Fab',  fab1],
     ['Mar',  mar1],
@@ -202,7 +204,8 @@ function drawChart2() {
   var options = {
     title: 'Patients Satisfaction',
     curveType: 'function',
-    legend: { position: 'bottom' }
+    legend: { position: 'bottom' },
+    colors: ['hotpink'],
   };
 
   var chart = new google.visualization.LineChart(document.getElementById('curve_chart3'));

@@ -14,11 +14,12 @@ app.set('views',path.join(__dirname, "views"));
 app.set('view engine', 'pug');
 app.use(express.json());
 app.use(express.static(path.join(__dirname, 'static'), { type: 'application/javascript' }));
-const { accessSync } = require('fs');
+
 
 
 
 app.get('/', CRUD.createTable);
+app.get('/insertData', CRUD.insertData);
 app.get('/dropTable', CRUD.dropTable);
 app.get('/insertSurgery', CRUD.insertSurgery);
 app.get('/getPoints', CRUD.getPoints);
