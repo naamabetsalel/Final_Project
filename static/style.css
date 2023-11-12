@@ -195,14 +195,51 @@ h1 {
 
 
   h1#he{
-    color: #65708a;
+    color: #393d47;
+    font-size: 20px;
+    font-style: italic;
+    margin-top: 10px;
+    margin-bottom: 5px;
   }
 
   h2#he2{
-    font-size: 20px;
+    font-size: 18px;
+    background: rgba(225, 225, 225, 0.7);
+    border-radius: 25px;
+    padding: 5px;
+    text-align: center;
   }
   
+  table, th, td {
+    border: 1px solid black;
+    text-align: center;
+    width: 50%;
+  }
 
+  .grid-container1{
+    display: grid;
+    grid-template-areas: 
+    'headerL headerR' 
+    'middle middle';
+    justify-items: center;
+  }
+
+  .leftUp{
+    grid-area: headerL;
+  }
+
+  .rightUp{
+    grid-area: headerR;
+  }
+
+  .middle{
+    grid-area: middle;
+    width: 800px;
+    height: 300px;
+    place-self: center;
+    margin-top: 25px;
+    margin-left: 350px;
+  }
   
 
 
