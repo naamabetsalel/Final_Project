@@ -157,7 +157,7 @@ const dropTable = (req,res)=>{
         const findSurgery = {
           type: req.query.SurgeryType,
           BMI: req.query.BMI,
-          age: req.query.age 
+          Age: req.query.age 
         };
         let bmi = ''
         if(findSurgery.BMI<=25){
@@ -171,13 +171,13 @@ const dropTable = (req,res)=>{
         }
 
         let age = '';
-        if(findSurgery.age<60){
+        if(findSurgery.Age<60){
             age = 'adult'
         }
-        if(findSurgery.age<30){
+        if(findSurgery.Age<30){
             age = 'young'
         }
-        if(findSurgery.age>=60){
+        if(findSurgery.Age>=60){
             age = 'old'
         }
 
@@ -190,6 +190,7 @@ const dropTable = (req,res)=>{
             return;
           }
           console.log(mysqlres);
+
           res.render('Points', { v1: mysqlres });
         });
       };
